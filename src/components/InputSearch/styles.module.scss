@@ -1,0 +1,15 @@
+.inputContainer {
+  width: 400px;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F8F9FA;
+  border-radius: 20px;
+  padding: 8px;
+  gap: 8px;
+
+  @media(min-width: 768px){
+    width: 352px;
+  }
+}

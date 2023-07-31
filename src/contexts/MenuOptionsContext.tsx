@@ -16,7 +16,6 @@ export function MenuOptionProvider({ children }: MenuOptionProps) {
   const [ menuOption, setMenuOption ] = useState(MenuOptionsTypes.USERLIST);
   
   return (
-
     <MenuOptionsContext.Provider value={{ menuOption, setMenuOption }}>
       {children}
     </MenuOptionsContext.Provider>
