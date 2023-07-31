@@ -17,8 +17,8 @@ export default function Home() {
           <Header title={MenuOptionsTypes[menuOption]}/>
           <main className="flex-1">
             
-            <div className="mt-20">
-              <table className="ml-4 table-auto border-collapse w-full">
+            <div className="px-3 mt-20 min-h-full">
+              <table className="table-auto border-collapse w-full">
                 <thead>
                   <tr>
                     <th>

@@ -10,7 +10,7 @@ interface DefaultProviderProps {
 export default function DefaultProviders({ children }: DefaultProviderProps) {
   return (
     <MenuOptionProvider>
-        {children}
+      {children}
     </MenuOptionProvider>
   )
 }
