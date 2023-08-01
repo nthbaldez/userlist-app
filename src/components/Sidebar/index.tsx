@@ -19,7 +19,7 @@ export default function Sidebar() {
 
   return (
     <aside className="aside bg-[#11224B] h-screen text-white">
-      <div>
+      <div className="min-h-screen">
         <h3 className="p-4 h-24">Logo</h3>
         <ul>
           <li 

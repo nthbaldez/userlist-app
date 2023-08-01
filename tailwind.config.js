@@ -9,6 +9,7 @@ module.exports = {
     extend: {},
     color: {
       title: '#343A40',
+      tableText: '#6C757D',
       current: 'currentColor',
       primary: '#11224B'
     }
