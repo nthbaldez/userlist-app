@@ -2,11 +2,15 @@
 
 import { userData } from '@/utils/data'
 import Image from 'next/image'
+import ButtonNew from '../ButtonNew'
 
 export default function UserList() {
   
   return (
-    <div className="mt-20 min-h-full">
+    <div className="mt-[24px] min-h-full flex flex-col gap-[24px]">
+      <div className="px-[25px] flex justify-end">
+        <ButtonNew />
+      </div>
       <table className="border-2 table-auto border-collapse w-full">
         <thead className="border-t-1 border-[#EAEAEA]-300 border-b-2">
           <tr>

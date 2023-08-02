@@ -7,6 +7,7 @@ import { MenuOptionsTypes } from "@/types/menuOptions";
 
 import UserList from '@/components/UserList';
 import Dashboard from '@/components/Dashboard';
+import NewUserTab from '@/components/NewUserTab';
 
 export default function Home() {
 
@@ -17,17 +18,12 @@ export default function Home() {
     setMain(menuOption);
   }, [menuOption])
 
-  const router = useRouter();
-
-  const handlePageNavigation = () => {
-    router.push('/edituser');
-  }
-
   return (
     <div className="max-h-screen sm:max-h-1/2">
       <main>
         { main === MenuOptionsTypes.USERLIST && <UserList />}
         { main === MenuOptionsTypes.DASHBOARD && <Dashboard />}
+        { main === MenuOptionsTypes.NEWUSER && <NewUserTab />}
       </main>
     </div>
   )

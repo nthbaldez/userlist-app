@@ -23,6 +23,8 @@ export default function Header() {
       setTitle('User List');
     } else if (menuOption == 4) {
       setTitle('Deliveries');
+    } else if (menuOption == 5) {
+      setTitle('New User');
     }
   }, [menuOption])
   

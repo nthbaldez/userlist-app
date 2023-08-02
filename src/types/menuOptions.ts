@@ -3,5 +3,6 @@ export enum MenuOptionsTypes {
   'NETWORK',
   'LISTDOC',
   'USERLIST',
-  'DELIVERIES'
+  'DELIVERIES',
+  'NEWUSER'
 }
