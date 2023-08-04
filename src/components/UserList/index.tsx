@@ -1,11 +1,40 @@
 "use client"
 
-import { userData } from '@/utils/data'
+// import { userData } from '@/utils/data'
 import Image from 'next/image'
 import ButtonNew from '../ButtonNew'
+import { fetchUsers } from '@/hooks/useGetUsers';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+interface UserProps {
+  id: number;
+  name: string;
+  birthDate: string;
+  address: string;
+  telephoneNumber: string;
+  status: string;
+  image: string;
+}
 
 export default function UserList() {
-  
+
+  const [users, setUsers] = useState<UserProps[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/users');
+        setUsers(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="mt-[24px] min-h-full flex flex-col gap-[24px]">
       <div className="px-[25px] flex justify-end">
@@ -28,7 +57,7 @@ export default function UserList() {
         </thead>
 
         <tbody>
-          {userData.map((user) => 
+          {users.map((user) => 
             <tr key={user.name} className="border-b-[1px] border-[#EAEAEA]-300 text-center text-[#6C757D]">
               <td className="px-4 py-2">
                 <input type="checkbox" className="cursor-pointer form-checkbox h-[20px] w-[20px] text-indigo-600 border-gray-300 rounded" />
