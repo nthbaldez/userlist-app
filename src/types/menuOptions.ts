@@ -4,5 +4,6 @@ export enum MenuOptionsTypes {
   'LISTDOC',
   'USERLIST',
   'DELIVERIES',
-  'NEWUSER'
+  'NEWUSER',
+  'EDITUSERTAB'
 }

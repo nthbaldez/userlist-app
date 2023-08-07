@@ -6,6 +6,7 @@ import ButtonNew from '../ButtonNew'
 import { fetchUsers } from '@/hooks/useGetUsers';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ButtonEditOrDeleteUser from '../ButtonEditUser';
 
 interface UserProps {
   id: number;
@@ -24,7 +25,7 @@ export default function UserList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/users');
+        const response = await fetchUsers();
         setUsers(response.data);
         console.log(response.data);
       } catch (error) {
@@ -58,7 +59,7 @@ export default function UserList() {
 
         <tbody>
           {users.map((user) => 
-            <tr key={user.name} className="border-b-[1px] border-[#EAEAEA]-300 text-center text-[#6C757D]">
+            <tr key={user.id} className="border-b-[1px] border-[#EAEAEA]-300 text-center text-[#6C757D]">
               <td className="px-4 py-2">
                 <input type="checkbox" className="cursor-pointer form-checkbox h-[20px] w-[20px] text-indigo-600 border-gray-300 rounded" />
               </td>
@@ -82,17 +83,7 @@ export default function UserList() {
                 </div>
               </td>
               <td className="w-[115px] px-4 py-2 cursor-pointer hover:bg-[#d2b6f8] text-[bg-[#9747FF]">
-                <button 
-                  className="flex items-center justify-center w-full h-full text-[16px]"
-                >
-                  <Image 
-                    src="reticencias.svg" 
-                    alt="" 
-                    width={20} 
-                    height={20} 
-                    className="text-white" 
-                  />
-                </button>
+                <ButtonEditOrDeleteUser {...user}/>
               </td>
             </tr>
           )}
