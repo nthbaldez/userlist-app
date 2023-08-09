@@ -17,21 +17,29 @@ interface EditUserProps {
 }
 
 export const HandleUserContext = createContext({
-  userToBeHandle: 0,
-  setUserToBeHandle: (id: number) => {},
+  userToBeHandle: {} as EditUserProps,
+  setUserToBeHandle: ({...props}: EditUserProps) => {},
   handleDelete: (id: number) => {},
-  handleEdit: (name: string) => {},
+  handleEdit: ({...props}: EditUserProps) => {},
 });
 
 export const HandleUserProvider = ({ children }:ModalProps) => {
-  const [ userToBeHandle, setUserToBeHandle ] = useState(0);
+  const [ userToBeHandle, setUserToBeHandle ] = useState({
+    id: 0,
+    name: "",
+    birthDate: "",
+    address: "",
+    telephoneNumber: "",
+    status: "",
+    image: "",
+  });
 
   const handleDelete = (id: number) => {
     console.log(id);
   };
 
-  const handleEdit = (name: string) => {
-    console.log(name);
+  const handleEdit = ({...props}: EditUserProps) => {
+    setUserToBeHandle({...props});
   };
 
   return (

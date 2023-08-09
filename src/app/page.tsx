@@ -32,7 +32,7 @@ export default function Home() {
         { main === MenuOptionsTypes.USERLIST && <UserList />}
         { main === MenuOptionsTypes.DASHBOARD && <Dashboard />}
         { main === MenuOptionsTypes.NEWUSER && <NewUserTab />}
-        { main === MenuOptionsTypes.EDITUSERTAB && <EditUserTab />}
+        { main === MenuOptionsTypes.EDITUSERTAB && <EditUserTab {...userToBeHandle}/>}
       </main>
 
       {isModalOpen && (
@@ -89,7 +89,7 @@ export default function Home() {
 
               <button 
                 className="w-[124px] bg-violet-500 hover:bg-violet-600 text-white text-sm px-[12px] py-[4px] rounded-lg"
-                onClick={() => handleDelete(userToBeHandle)}
+                onClick={() => handleDelete(userToBeHandle.id)}
               >
                 Yes
               </button>

@@ -12,7 +12,7 @@ interface ButtonEditNewUserProps {
   image: string;
 }
 
-export default function ButtonEditOrDeleteUser({ id, name, birthDate, address, telephoneNumber, image }:ButtonEditNewUserProps) {
+export default function ButtonEditOrDeleteUser({ id, name, birthDate, address, telephoneNumber, status, image }:ButtonEditNewUserProps) {
 
   const [ listIsOpen, setListIsOpen ] = useState(false);
   
@@ -30,7 +30,7 @@ export default function ButtonEditOrDeleteUser({ id, name, birthDate, address, t
           className="text-white" 
         />
       </button>
-      {listIsOpen && <ListOptions id={id} name={name} setListIsOpen={setListIsOpen}/>}
+      {listIsOpen && <ListOptions id={id} name={name} birthDate={birthDate} address={address} telephoneNumber={telephoneNumber} image={image} status={status} setListIsOpen={setListIsOpen}/>}
     </div>
   )
 }

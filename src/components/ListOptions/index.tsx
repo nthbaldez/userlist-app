@@ -8,24 +8,30 @@ import { MenuOptionsTypes } from '@/types/menuOptions';
 interface ListOptionsProps {
   id: number;
   name: string;
+  birthDate: string;
+  address: string;
+  telephoneNumber: string;
+  status: string;
+  image: string;
   setListIsOpen: (isOpen: boolean) => void;
 }
 
-export default function ListOptions({ id, name, setListIsOpen }:ListOptionsProps) {
+export default function ListOptions({ setListIsOpen, ...props }:ListOptionsProps) {
   const { openModal } = useModalMenu();
   const { setMenuOption } = useMenuOption();
   const { setUserToBeHandle, handleEdit } = useHandleUser();
   
-  const handleEditModal = () => {
+  const handleEditTab = () => {
     setMenuOption(MenuOptionsTypes.EDITUSERTAB);
-    handleEdit(name);
-    console.log(id)
+    handleEdit({...props});
+    setUserToBeHandle({...props});
+    console.log({...props});
   }
 
-  const handleDeleteModal = () => {
+  const handleDeleteUserModal = () => {
     openModal();
     setListIsOpen(false)
-    setUserToBeHandle(id);
+    setUserToBeHandle({...props});
     console.log('delete')
   }
 
@@ -33,14 +39,14 @@ export default function ListOptions({ id, name, setListIsOpen }:ListOptionsProps
     <ul className="flex flex-col items-center justify-around absolute w-[239px] h-[170px] bg-white right-[80px] z-40 top-[5px] border-radius rounded-lg shadow-lg">
       <li 
         className="w-[153px] h-[93px] flex items-center justify-center cursor-pointer hover:text-violet-600"
-        onClick={() => handleEditModal()}
+        onClick={() => handleEditTab()}
       >
         Edit
       </li>
       <span className="h-[1px] w-[130px] bg-slate-300"></span>
       <li 
         className="w-[153px] h-[93px] flex items-center justify-center cursor-pointer hover:text-violet-600"
-        onClick={() => handleDeleteModal()}
+        onClick={() => handleDeleteUserModal()}
       >
         Delete
       </li>

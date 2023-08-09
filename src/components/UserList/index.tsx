@@ -1,11 +1,9 @@
 "use client"
 
-// import { userData } from '@/utils/data'
 import Image from 'next/image'
 import ButtonNew from '../ButtonNew'
 import { fetchUsers } from '@/hooks/useGetUsers';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import ButtonEditOrDeleteUser from '../ButtonEditUser';
 
 interface UserProps {
