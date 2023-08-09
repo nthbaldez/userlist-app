@@ -1,6 +1,7 @@
 import { useMenuOption } from '@/hooks/useMenuOption';
 import { MenuOptionsTypes } from '@/types/menuOptions';
 import Image from 'next/image'
+import AddIcon from '../svg/AddIcon';
 
 export default function ButtonNew() {
 
@@ -16,7 +17,7 @@ export default function ButtonNew() {
       onClick={() => pageNavigationToNewUserTab()}
     >
       ADD NEW
-      <Image src="add.svg" alt="" width={24} height={24}/>
+      <AddIcon />
     </button>
   )
 }

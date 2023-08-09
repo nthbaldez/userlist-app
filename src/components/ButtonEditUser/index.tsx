@@ -30,7 +30,7 @@ export default function ButtonEditOrDeleteUser({ id, name, birthDate, address, t
           className="text-white" 
         />
       </button>
-      {listIsOpen && <ListOptions id={id}/>}
+      {listIsOpen && <ListOptions id={id} name={name} setListIsOpen={setListIsOpen}/>}
     </div>
   )
 }
