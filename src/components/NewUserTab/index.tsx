@@ -1,8 +1,17 @@
 "use client"
 
-import ButtonNew from "../ButtonNew";
-import * as yup from "yup"
 import { useForm } from 'react-hook-form';
+import { useMenuOption } from "@/hooks/useMenuOption";
+import { MenuOptionsTypes } from "@/types/menuOptions";
+
+import DatePicker from 'sassy-datepicker';
+import '../../../node_modules/sassy-datepicker/dist/styles.css';
+import './styles.css';
+
+import * as yup from "yup"
+import ButtonNew from "../ButtonNew";
+import VectorImage from "../svg/VectorImage";
+import { useState } from 'react';
 
 type FormData = {
   fullName: string;
@@ -20,9 +29,12 @@ const schema = yup
   })
   .required();
 
+
 export default function NewUserTab() {
 
+  const { setMenuOption } = useMenuOption();
   const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const [ dateValue, setDateValue ] = useState(new Date());
 
   const onSubmit = handleSubmit((data) => {
     if (data) {
@@ -32,23 +44,25 @@ export default function NewUserTab() {
     }
   });
 
+  const onChange = (newDate: Date) => {
+    console.log(`New date selected - ${newDate.toString()}`);
+    setDateValue(newDate);
+  };
+
   return (
     <div className="mt-[24px] min-h-full flex flex-col gap-[24px]">
       <div className="px-[25px] flex justify-end">
         <ButtonNew />
       </div>
-      <div className="grid gap-[8px] grid-flow-col border-[#EAEAEA]-300 border-t-2">
-        <div className="mt-[60px] h-[366px] w-[262px] flex flex-col justify-center items-center gap-[35px] ml-[154px]">
+      <div className="grid gap-[8px] grid-flow-col border-[#EAEAEA]-300 border-t-2 px-[154px]">
+        <div className="mt-[45px] mx-auto h-[366px] w-auto flex flex-col justify-center items-center gap-[35px]">
           <h3>Photo Profile</h3>
-          {/* <Image 
-            src={} 
-            alt={} 
-            width={210} 
-            height={210}
-          /> */}
+          <div className="w-[210px] h-[210px] bg-slate-50 rounded-full flex items-center justify-center">
+            <VectorImage />
+          </div>
         </div>
 
-        <div className="w-[572px] px-[16px] flex flex-col justify-start gap-[10px] mt-[40px]">
+        <div className="w-[572px] px-[16px] flex flex-col justify-start gap-[10px] mt-[40px] mx-auto">
           <h1 className="text-gray-500">Profile</h1>
           <form 
             onSubmit={onSubmit}
@@ -56,39 +70,48 @@ export default function NewUserTab() {
             <div className="flex flex-col justify-start gap-[8px] text-gray-500">
               <label className="text-[12px]">Full name</label>
               <input
-                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg"
+                type="text"
+                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                 {...register("fullName")}
               />
             </div>
 
-            <div className="flex flex-col justify-start gap-[8px]">
+            <div className="flex flex-col justify-start gap-[8px] h-[350px]">
               <label className="text-[12px]">Your date birthday</label>
               <input
+                type="text"
+                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                 {...register("birthDate")}
+                value={dateValue.toLocaleString("pt-BR").split(",")[0]}
               />
+              <DatePicker
+                className="text-[12px] w-full m-auto" 
+                onChange={onChange} 
+                value={dateValue}
+              /> 
             </div>
 
             <div className="flex flex-col justify-start gap-[8px]">
               <label className="text-[12px]">Address</label>
               <input
-                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg"
+                type="text"
+                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                 {...register("address")}
               />
             </div>
             <div className="flex flex-col justify-start gap-[8px]">
               <label className="text-[12px]">Phone</label>
               <input
-                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg"
+                type="text"
+                className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                 {...register("telephoneNumber")}
               />
             </div>
             <div className="w-full flex justify-end items-center gap-[24px] mt-[20px]">
               <button
-                className="bg-white border-2 border-gray-950 px-[15px] py-[7px] rounded-[20px]" 
+                className="bg-white border-[1px] border-solid border-gray-950 px-[15px] py-[7px] rounded-[20px]" 
                 type="submit"
-                onClick={() => {
-                  // setValue("fullName", props.name)
-                }}
+                onClick={() => setMenuOption(MenuOptionsTypes.USERLIST)}
               >
                 CANCEL
               </button>

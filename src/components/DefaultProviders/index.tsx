@@ -1,5 +1,7 @@
 "use client"
 
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { HandleUserProvider } from "@/contexts/HandleUserContext";
 import { MenuOptionProvider } from "@/contexts/MenuOptionsContext";
 import { ModalProvider } from "@/contexts/ModalContext";
@@ -12,11 +14,13 @@ interface DefaultProviderProps {
 export default function DefaultProviders({ children }: DefaultProviderProps) {
   return (
     <MenuOptionProvider>
-      <HandleUserProvider>
-        <ModalProvider>
-        {children}
-        </ModalProvider>
-      </HandleUserProvider>
+        <HandleUserProvider>
+          <ModalProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              {children}
+            </LocalizationProvider>
+          </ModalProvider>
+        </HandleUserProvider>
     </MenuOptionProvider>
   )
 }

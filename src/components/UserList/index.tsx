@@ -62,7 +62,8 @@ export default function UserList() {
                 <input type="checkbox" className="cursor-pointer form-checkbox h-[20px] w-[20px] text-indigo-600 border-gray-300 rounded" />
               </td>
               <td className="px-4 py-2 flex items-center justify-center">
-                <Image 
+                <Image
+                  className="fill-transparent"
                   src={user.image} 
                   alt="Eliza" 
                   width={38} 

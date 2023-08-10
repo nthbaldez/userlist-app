@@ -50,7 +50,7 @@ export default function Sidebar() {
             </div>
           </li>      
           <li 
-            className={menuOption == MenuOptionsTypes.USERLIST || menuOption == MenuOptionsTypes.NEWUSER ? 'active' : ''}
+            className={menuOption == MenuOptionsTypes.USERLIST || menuOption == MenuOptionsTypes.NEWUSER || menuOption == MenuOptionsTypes.EDITUSERTAB ? 'active' : ''}
             onClick={() => handleChangeMenuOption(MenuOptionsTypes.USERLIST)}
           >
             <div className="cursor-pointer ml-2 w-62 py-3 flex items-center gap-3">
