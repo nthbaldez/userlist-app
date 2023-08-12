@@ -18,7 +18,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-[268px] bg-[#11224B] h-screen text-white">
+    <aside className="w-[268px] bg-[#11224B] h-full text-white mobileSmall:hidden lg:block">
       <div className="min-h-screen">
         <h3 className="p-4 h-24">Logo</h3>
         <ul>

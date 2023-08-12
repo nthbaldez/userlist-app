@@ -5,6 +5,7 @@ import ButtonNew from '../ButtonNew'
 import { fetchUsers } from '@/hooks/useGetUsers';
 import { useEffect, useState } from 'react';
 import ButtonEditOrDeleteUser from '../ButtonEditUser';
+import InputSearch from '../InputSearch';
 
 interface UserProps {
   id: number;
@@ -35,11 +36,14 @@ export default function UserList() {
   }, []);
 
   return (
-    <div className="mt-[24px] min-h-full flex flex-col gap-[24px]">
-      <div className="px-[25px] flex justify-end">
+    <div className="mt-[24px] flex flex-col gap-[24px] mobileSmall:max-md:flex mobileSmall:max-md:h-screen">
+      <div className="px-[25px] flex justify-end mobileSmall:max-md:hidden">
         <ButtonNew />
       </div>
-      <table className="border-2 table-auto border-collapse w-full">
+      <div className="flex justify-center items-center md:hidden">
+        <InputSearch />
+      </div>
+      <table className="border-2 table-auto border-collapse w-full mobileSmall:min-h-[250px]">
         <thead className="border-t-1 border-[#EAEAEA]-300 border-b-2">
           <tr>
             <th className="w-[58px] h-[50px]">
@@ -48,9 +52,9 @@ export default function UserList() {
             <th className="w-[60px] px-4 py-2 text-title">Profile</th>
             <th className="w-[428px] px-4 py-2 text-title text-left">Name</th>
             <th className="w-[232px] px-4 py-2 text-title text-left">Birth Date</th>
-            <th className="w-[198px] px-4 py-2 text-title text-left">Endereço</th>
-            <th className="w-[302px] px-4 py-2 text-title">Telefone</th>
-            <th className="w-[230px] px-4 py-2 text-title">Status</th>
+            <th className="w-[198px] px-4 py-2 text-title text-left mobileSmall:max-md:hidden">Endereço</th>
+            <th className="w-[302px] px-4 py-2 text-title mobileSmall:max-md:hidden md:max-lg:w-[350px]">Telefone</th>
+            <th className="w-[230px] px-4 py-2 text-title mobileSmall:max-md:hidden md:max-lg:w-[80px]">Status</th>
             <th className="px-4 py-2 text-title">Action</th>
           </tr>
         </thead>
@@ -72,9 +76,9 @@ export default function UserList() {
               </td>
               <td className="px-4 py-2 text-left">{user.name}</td>
               <td className="px-4 py-2 text-left">{user.birthDate}</td>
-              <td className="px-4 py-2 text-left">{user.address}</td>
-              <td className="px-4 py-2">{user.telephoneNumber}</td>
-              <td className="px-4 py-2">
+              <td className="px-4 py-2 text-left mobileSmall:max-md:hidden">{user.address}</td>
+              <td className="px-4 py-2 mobileSmall:max-md:hidden">{user.telephoneNumber}</td>
+              <td className="px-4 py-2 mobileSmall:max-md:hidden">
                 <div className={user.status === 'Done' ? 'py-[2px] px-[10px] m-auto w-[70px] text-center bg-[#d1fae5] text-[#28A745] rounded-3xl' : 'py-[2px] px-[10px] m-auto w-[70px] text-center bg-[#fed7aa] text-[#DC8535] rounded-3xl'}>
                   <p>
                     {user.status}
@@ -88,6 +92,9 @@ export default function UserList() {
           )}
         </tbody>
       </table>
+      <div className="px-[25px] flex justify-end md:hidden">
+        <ButtonNew />
+      </div>
     </div>
   )
 }

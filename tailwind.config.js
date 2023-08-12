@@ -6,13 +6,15 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
-    color: {
-      title: '#343A40',
-      tableText: '#6C757D',
-      current: 'currentColor',
-      primary: '#11224B'
-    }
+    extend: {
+      screens: {
+        'mobileSmall': '320px',
+        'mobileLarge': '425px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+      },
+    },
   },
   plugins: [],
 }

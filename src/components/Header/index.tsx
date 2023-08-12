@@ -31,7 +31,9 @@ export default function Header() {
   return (
     <header className="h-16 flex p-5 justify-between items-center shadow-lg">
       <h4 className="text-title font-bold">{title}</h4>
-      <InputSearch />
+      <div className="mobileSmall:max-md:hidden">
+        <InputSearch />
+      </div>
       <div>
         <Image 
           src="eliza.svg" 
