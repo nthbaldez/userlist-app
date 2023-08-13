@@ -3,13 +3,8 @@
 import Image from 'next/image'
 import ButtonNew from "../ButtonNew";
 import * as yup from "yup"
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useMenuOption } from '@/hooks/useMenuOption';
-import { MenuOptionsTypes } from '@/types/menuOptions';
 import { useState } from 'react';
-import DatePickerComponent from '../DatePicker';
-import ControlledInput from '../ControlledInput';
 import InputSearch from '../InputSearch';
 import { UpdateUser } from '@/services/Users/UserService';
 
@@ -39,24 +34,16 @@ const schema = yup.object({
   birthDate: yup
   .date()
   .required('Informe sua data de nascimento'),
-  // birthDate: yup
-  //   .string()
-  //   .transform((curr, orig) => (orig === '' ? undefined : curr))
-  //   .required('A data é obrigatória')
-  //   .test('valid-date', 'Data inválida', function (value) {
-  //     return /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[0-2])[/]\d{4}$/.test(value);
-  //   }),
   address: yup.string().required('Informe seu endereço'),
   telephoneNumber: yup
     .string()
     .required('Informe o número completo com o DDD')
-    .min(11),
+    .min(11, 'Mínimo 11 caracteres'),
 });
     
 export default function EditUserTab({...props}: EditUserTabProps) {
 
   const { setMenuOption } = useMenuOption();
-  const {name, birthDate, address, telephoneNumber, id} = props;
   const [formData, setFormData] = useState<EditUserProps>({...props});
 
   const [dia, mes, ano] = props.birthDate.split('/');

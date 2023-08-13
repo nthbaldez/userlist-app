@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import ButtonEditOrDeleteUser from '../ButtonEditUser';
 import InputSearch from '../InputSearch';
 import UserListLogo from '../svg/UserListLogo';
+import VectorImage from '../svg/VectorImage';
 
 interface UserProps {
   id: string;
@@ -27,7 +28,6 @@ export default function UserList() {
       try {
         const response = await fetchUsers();
         setUsers(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Erro na requisição:', error);
       }
@@ -82,7 +82,7 @@ export default function UserList() {
               </td>
               <td className="px-4 py-2 flex items-center justify-center">
                 {
-                  user.image && 
+                  user.image ?
                   <Image
                     className="fill-transparent"
                     src={user.image} 
@@ -90,6 +90,10 @@ export default function UserList() {
                     width={38} 
                     height={38}
                   />
+                  :
+                  <div className="flex items-center justify-center w-[40px] h-[40px] bg-slate-50 rounded-full">
+                    <VectorImage />
+                  </div>
                 }
               </td>
               <td className="px-4 py-2 text-left">{user.name}</td>

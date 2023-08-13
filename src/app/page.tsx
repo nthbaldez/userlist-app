@@ -16,6 +16,11 @@ import { useHandleUser } from '@/hooks/useHandleUser';
 
 export default function Home() {
 
+  const handleDeleteUser = (id: string) => {
+    handleDelete(id);
+    closeModal();
+  }
+
   const { menuOption } = useMenuOption();
   const { isModalOpen, closeModal} = useModalMenu();
   const { userToBeHandle, handleDelete } = useHandleUser();
@@ -89,7 +94,7 @@ export default function Home() {
 
               <button 
                 className="w-[124px] bg-violet-500 hover:bg-violet-600 text-white text-sm px-[12px] py-[4px] rounded-lg"
-                onClick={() => handleDelete(userToBeHandle.id)}
+                onClick={() => handleDeleteUser(userToBeHandle.id)}
               >
                 Yes
               </button>

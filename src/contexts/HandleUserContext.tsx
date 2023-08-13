@@ -1,5 +1,8 @@
 "use client"
 
+import { useMenuOption } from '@/hooks/useMenuOption';
+import { useModalMenu } from '@/hooks/useModalMenu';
+import { DeleteUser } from '@/services/Users/UserService';
 import React, { createContext, useState, ReactNode } from 'react';
 
 interface ModalProps {
@@ -20,10 +23,10 @@ export const HandleUserContext = createContext({
   userToBeHandle: {} as EditUserProps,
   setUserToBeHandle: ({...props}: EditUserProps) => {},
   handleDelete: (id: string) => {},
-  handleEdit: ({...props}: EditUserProps) => {},
 });
 
 export const HandleUserProvider = ({ children }:ModalProps) => {
+  
   const [ userToBeHandle, setUserToBeHandle ] = useState({
     id: '',
     name: "",
@@ -34,16 +37,12 @@ export const HandleUserProvider = ({ children }:ModalProps) => {
     image: "",
   });
 
-  const handleDelete = (id: string) => {
-    console.log(id);
-  };
-
-  const handleEdit = ({...props}: EditUserProps) => {
-    setUserToBeHandle({...props});
+  const handleDelete = async (id: string) => {
+    await DeleteUser(id);
   };
 
   return (
-    <HandleUserContext.Provider value={{ userToBeHandle, setUserToBeHandle, handleDelete, handleEdit }}>
+    <HandleUserContext.Provider value={{ userToBeHandle, setUserToBeHandle, handleDelete }}>
       {children}
     </HandleUserContext.Provider>
   );

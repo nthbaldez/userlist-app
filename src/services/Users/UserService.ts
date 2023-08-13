@@ -65,13 +65,17 @@ export async function CreateUser(payload: CreateUserProps) {
 }
 
 export async function UpdateUser(payload: UpdateUserProps) {
-  console.log('chegou aqui: ' + payload.name);
-    try {
-      const response = await api.put(`/users/${payload.id}`, payload);
-      console.log('User updated:', response.data);
-      // Handle successful update, show notifications, etc.
-    } catch (error) {
-      console.error('Error updating user:', error);
-      // Handle errors, show error messages, etc.
-    }
+  try {
+    const response = await api.put(`/users/${payload.id}`, payload);
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
+}
+
+export async function DeleteUser(userID: string) {
+  try {
+    const response = await api.delete(`/users/${userID}`);
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
 }
