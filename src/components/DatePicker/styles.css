@@ -24,3 +24,11 @@
 .sdp--date-btn__selected {
   background-color: #9747FF;
 }
+
+@media (max-width: 767px) {
+  .sdp--grid {
+    max-width: 252px;
+    margin-left: 25px;
+    font-weight: bold;
+  }
+}

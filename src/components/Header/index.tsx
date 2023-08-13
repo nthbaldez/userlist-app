@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import InputSearch from "../InputSearch"
 import Image from 'next/image'
 import { useMenuOption } from "@/hooks/useMenuOption";
+import MenuHamburguer from "../MenuHamburguer";
 
 interface HeaderProps {
   title: string;
@@ -30,10 +31,12 @@ export default function Header() {
   
   return (
     <header className="h-16 flex p-5 justify-between items-center shadow-lg">
-      <h4 className="text-title font-bold">{title}</h4>
+      <h4 className="text-title font-bold mobileSmall:max-md:hidden">{title}</h4>
+      <MenuHamburguer />
       <div className="mobileSmall:max-md:hidden">
         <InputSearch />
       </div>
+      <h4 className="text-title font-bold md:hidden">{title}</h4>
       <div>
         <Image 
           src="eliza.svg" 

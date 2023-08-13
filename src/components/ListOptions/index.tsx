@@ -6,7 +6,7 @@ import { useModalMenu } from '@/hooks/useModalMenu';
 import { MenuOptionsTypes } from '@/types/menuOptions';
 
 interface ListOptionsProps {
-  id: number;
+  id: string;
   name: string;
   birthDate: string;
   address: string;

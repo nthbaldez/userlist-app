@@ -27,7 +27,7 @@ export default function Home() {
   }, [menuOption])
 
   return (
-    <div className="max-h-screen sm:max-h-1/2">
+    <div className=" sm:max-h-1/2">
       <main>
         { main === MenuOptionsTypes.USERLIST && <UserList />}
         { main === MenuOptionsTypes.DASHBOARD && <Dashboard />}

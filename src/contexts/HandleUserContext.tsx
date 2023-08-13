@@ -7,7 +7,7 @@ interface ModalProps {
 }
 
 interface EditUserProps {
-  id: number;
+  id: string;
   name: string;
   birthDate: string;
   address: string;
@@ -19,13 +19,13 @@ interface EditUserProps {
 export const HandleUserContext = createContext({
   userToBeHandle: {} as EditUserProps,
   setUserToBeHandle: ({...props}: EditUserProps) => {},
-  handleDelete: (id: number) => {},
+  handleDelete: (id: string) => {},
   handleEdit: ({...props}: EditUserProps) => {},
 });
 
 export const HandleUserProvider = ({ children }:ModalProps) => {
   const [ userToBeHandle, setUserToBeHandle ] = useState({
-    id: 0,
+    id: '',
     name: "",
     birthDate: "",
     address: "",
@@ -34,7 +34,7 @@ export const HandleUserProvider = ({ children }:ModalProps) => {
     image: "",
   });
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     console.log(id);
   };
 

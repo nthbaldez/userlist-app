@@ -6,9 +6,10 @@ import { fetchUsers } from '@/hooks/useGetUsers';
 import { useEffect, useState } from 'react';
 import ButtonEditOrDeleteUser from '../ButtonEditUser';
 import InputSearch from '../InputSearch';
+import UserListLogo from '../svg/UserListLogo';
 
 interface UserProps {
-  id: number;
+  id: string;
   name: string;
   birthDate: string;
   address: string;
@@ -43,6 +44,20 @@ export default function UserList() {
       <div className="flex justify-center items-center md:hidden">
         <InputSearch />
       </div>
+
+      <div className="lg:hidden flex items-center justify-between mr-[25px]">
+        <div className="bg-[#9747FF] w-[250px] cursor-pointer py-3 flex items-center gap-3 rounded-tr-3xl rounded-br-3xl">
+          <div className="ml-6 flex items-center gap-2 text-white">
+            <UserListLogo />
+            User List
+          </div>
+        </div>
+
+        <div>
+          All ({users.length})
+        </div>
+      </div>
+
       <table className="border-2 table-auto border-collapse w-full mobileSmall:min-h-[250px]">
         <thead className="border-t-1 border-[#EAEAEA]-300 border-b-2">
           <tr>
@@ -66,13 +81,16 @@ export default function UserList() {
                 <input type="checkbox" className="cursor-pointer form-checkbox h-[20px] w-[20px] text-indigo-600 border-gray-300 rounded" />
               </td>
               <td className="px-4 py-2 flex items-center justify-center">
-                <Image
-                  className="fill-transparent"
-                  src={user.image} 
-                  alt="Eliza" 
-                  width={38} 
-                  height={38}
-                />
+                {
+                  user.image && 
+                  <Image
+                    className="fill-transparent"
+                    src={user.image} 
+                    alt={user.name} 
+                    width={38} 
+                    height={38}
+                  />
+                }
               </td>
               <td className="px-4 py-2 text-left">{user.name}</td>
               <td className="px-4 py-2 text-left">{user.birthDate}</td>

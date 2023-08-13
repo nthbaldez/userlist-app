@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ListOptions from '../ListOptions';
 
 interface ButtonEditNewUserProps {
-  id: number;
+  id: string;
   name: string;
   birthDate: string;
   address: string;

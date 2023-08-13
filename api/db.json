@@ -6,8 +6,8 @@
       "birthDate": "20/12/1993",
       "address": "Rua Natal",
       "telephoneNumber": "99675-0941",
-      "status": "Done",
-      "image": "/eliza.svg"
+      "image": "/eliza.svg",
+      "status": "Done"
     },
     {
       "id": 2,
@@ -35,6 +35,15 @@
       "telephoneNumber": "99675-0941",
       "status": "Cancel",
       "image": "/icaro.svg"
+    },
+    {
+      "id": "6948066105",
+      "name": "Nathan",
+      "birthDate": "08/11/1993",
+      "address": "Avenida Central",
+      "telephoneNumber": "61991363677",
+      "image": "",
+      "status": "Done"
     }
   ]
 }
