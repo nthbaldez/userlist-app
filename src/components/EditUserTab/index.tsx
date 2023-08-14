@@ -42,7 +42,6 @@ const schema = yup.object({
 });
     
 export default function EditUserTab({...props}: EditUserTabProps) {
-  console.log(props.birthDate)
 
   const { setMenuOption } = useMenuOption();
   const [formData, setFormData] = useState<EditUserProps>({...props});
