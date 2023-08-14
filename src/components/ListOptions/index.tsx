@@ -19,11 +19,11 @@ interface ListOptionsProps {
 export default function ListOptions({ setListIsOpen, ...props }:ListOptionsProps) {
   const { openModal } = useModalMenu();
   const { setMenuOption } = useMenuOption();
-  const { setUserToBeHandle, handleEdit } = useHandleUser();
+  const { setUserToBeHandle } = useHandleUser();
   
   const handleEditTab = () => {
     setMenuOption(MenuOptionsTypes.EDITUSERTAB);
-    handleEdit({...props});
+    setUserToBeHandle({...props});
     setUserToBeHandle({...props});
     console.log({...props});
   }
