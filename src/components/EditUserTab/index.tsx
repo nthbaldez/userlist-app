@@ -7,6 +7,7 @@ import { useMenuOption } from '@/hooks/useMenuOption';
 import { useState } from 'react';
 import InputSearch from '../InputSearch';
 import { UpdateUser } from '@/services/Users/UserService';
+import { formatDate } from '@/utils/formatDate';
 
 
 interface EditUserTabProps {
@@ -21,10 +22,10 @@ interface EditUserTabProps {
 
 type EditUserProps = {
   id: string
-  name?: string;
-  birthDate?: string;
-  address?: string;
-  telephoneNumber?: string;
+  name: string;
+  birthDate: string;
+  address: string;
+  telephoneNumber: string;
   status: string;
   image: string;
 } 
@@ -42,15 +43,14 @@ const schema = yup.object({
 });
     
 export default function EditUserTab({...props}: EditUserTabProps) {
-
   const { setMenuOption } = useMenuOption();
   const [formData, setFormData] = useState<EditUserProps>({...props});
 
   const [dia, mes, ano] = props.birthDate.split('/');
   const dateFormatted = `${ano}-${mes}-${dia}`;
 
-  const handleEditUser = async () => {
-    await UpdateUser(formData)
+  const handleEditUser = () => {
+    UpdateUser(formData)
     setMenuOption(3);
   }
 
@@ -60,6 +60,7 @@ export default function EditUserTab({...props}: EditUserTabProps) {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -98,6 +99,7 @@ export default function EditUserTab({...props}: EditUserTabProps) {
                 name="name" 
                 defaultValue={props.name}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -109,6 +111,7 @@ export default function EditUserTab({...props}: EditUserTabProps) {
                 name="birthDate"
                 defaultValue={dateFormatted}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -120,6 +123,7 @@ export default function EditUserTab({...props}: EditUserTabProps) {
                 name="address"
                 defaultValue={props.address}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -131,6 +135,7 @@ export default function EditUserTab({...props}: EditUserTabProps) {
                 name="telephoneNumber"
                 defaultValue={props.telephoneNumber}
                 onChange={handleChange}
+                required
               />
             </div>
             

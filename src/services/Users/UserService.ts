@@ -1,6 +1,5 @@
+import { formatDate } from '@/utils/formatDate';
 import { api } from '../api';
-
-import { v4 as uuidv4 } from 'uuid';
 
 interface CreateUserProps {
   name: string;
@@ -11,10 +10,10 @@ interface CreateUserProps {
 
 interface UpdateUserProps {
   id: string
-  name?: string;
-  birthDate?: string;
-  address?: string;
-  telephoneNumber?: string;
+  name: string;
+  birthDate: string;
+  address: string;
+  telephoneNumber: string;
   status: string;
   image: string;
 }
@@ -65,8 +64,11 @@ export async function CreateUser(payload: CreateUserProps) {
 }
 
 export async function UpdateUser(payload: UpdateUserProps) {
+  const formattedDate = formatDate(payload.birthDate);
+
   try {
-    const response = await api.put(`/users/${payload.id}`, payload);
+    const response = await api.put(`/users/${payload.id}`, { ...payload, birthDate: formattedDate });
+    console.log(response.data);
   } catch (error) {
     console.error('Error updating user:', error);
   }
@@ -75,6 +77,7 @@ export async function UpdateUser(payload: UpdateUserProps) {
 export async function DeleteUser(userID: string) {
   try {
     const response = await api.delete(`/users/${userID}`);
+    console.log(response.data);
   } catch (error) {
     console.error('Error updating user:', error);
   }
