@@ -12,7 +12,7 @@
     {
       "id": "2",
       "name": "Matheus Sukso",
-      "birthDate": "9/9/1993",
+      "birthDate": "09/09/1993",
       "address": "Rua Santa Catarina",
       "telephoneNumber": "99675-0941",
       "status": "Done",
@@ -21,7 +21,7 @@
     {
       "id": "3",
       "name": "Leandro Reis",
-      "birthDate": "6/11/1989",
+      "birthDate": "06/11/1989",
       "address": "Rua São Paulo",
       "telephoneNumber": "99675-0941",
       "image": "/leandro.svg",
@@ -30,20 +30,20 @@
     {
       "id": "4",
       "name": "Icaro Monteiro",
-      "birthDate": "1/10/1986",
+      "birthDate": "01/10/1986",
       "address": "Rua Fortaleza",
       "telephoneNumber": "99675-0941",
       "status": "Cancel",
       "image": "/icaro.svg"
     },
     {
+      "id": "4066045363",
       "name": "Nathan Baldez",
       "birthDate": "08/11/1993",
       "address": "Avenida Central Bloco 1645",
       "telephoneNumber": "61991363677",
-      "id": "4066045363",
-      "status": "Done",
-      "image": ""
+      "image": "",
+      "status": "Done"
     }
   ]
 }

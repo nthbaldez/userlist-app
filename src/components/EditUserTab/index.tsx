@@ -42,6 +42,7 @@ const schema = yup.object({
 });
     
 export default function EditUserTab({...props}: EditUserTabProps) {
+  console.log(props.birthDate)
 
   const { setMenuOption } = useMenuOption();
   const [formData, setFormData] = useState<EditUserProps>({...props});
@@ -102,7 +103,6 @@ export default function EditUserTab({...props}: EditUserTabProps) {
             </div>
 
             <div className="flex flex-col justify-start gap-[8px]">
-              {/* <DatePickerComponent /> */}
               <label className="text-[12px]">Birth Date</label>
               <input
                 className="w-full h-[48px] px-[16px] py-[12px] text-[14px] leading-normal bg-gray-100 rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
